@@ -1,0 +1,27 @@
+<div class="animated fadeIn">
+
+    <h2 class="display-4 pb-4">Resultados para <small>"{{strBusqueda}}"</small></h2>
+
+    <!-- *ngIf funciona en torno a un valor boolean-->
+    <div *ngIf=" Resultados.length === 0 " class="alert alert-info animated fadeIn" role="alert">
+        No se encuentran resultados para el termino "<b>{{strBusqueda}}</b>"
+    </div>
+    <!--  _____If____   -->
+    <!--si            no-->
+    <!--true Else(False)-->
+    <!-- '123' == 123 (comparativo) vs  2 === '2'(comparativo restrictivo) -->
+
+    <div *ngIf=" Resultados.length == 0 " class="card-columns">
+        <!-- La declaración let i = index contabiliza cada emisión del *ngFor -->
+        <div class="card fadeIn animated" *ngFor="let Hero of Resultados; let i = index">
+            <img src=" {{Hero.img}} " class="card-img-top " alt="... ">
+            <div class="card-body ">
+                <h5 class="card-title ">{{ Hero.nombre }}</h5>
+                <p class="card-text ">{{Hero.bio.substring(0, 100)}} ...</p>
+                <small>{{Hero.aparicion}}</small>
+            </div>
+            <!-- [routerLink]="[ '/hero', i] " la ", " despues de 'Hero' la usamos para pasar el indice como parámetro de la ruta -->
+            <!-- <button (click)="Navegar(i)" class="btn btn-outline-success btn-block ">Ver mas...</button> -->
+        </div>
+    </div>
+</div>

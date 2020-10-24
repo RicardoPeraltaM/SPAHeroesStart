@@ -1,0 +1,18 @@
+<div class="fast fadeIn">
+
+    <h2 class="display-4 pb-4">Herores <small>DC y MARVEL</small></h2>
+
+    <div class="card-columns">
+        <!-- La declaración let i = index contabiliza cada emisión del *ngFor -->
+        <div class="card fadeIn animated border" [ngClass]="{'border-primary': Hero.casa == 'DC', 'border-danger': Hero.casa == 'Marvel'}" *ngFor="let Hero of ArrayHeros; let i = index">
+            <img src=" {{Hero.img}} " class="card-img-top " alt="... ">
+            <div class="card-body ">
+                <h5 class="card-title ">{{ Hero.nombre }}</h5>
+                <p class="card-text ">{{Hero.bio.substring(0, 100)}} ...</p>
+                <small>{{Hero.aparicion}}</small>
+            </div>
+            <!-- [routerLink]="[ '/hero', i] " la ", " despues de 'Hero' la usamos para pasar el indice como parámetro de la ruta -->
+            <button (click)="Navegar(i)" class="btn btn-outline-success btn-block ">Ver mas...</button>
+        </div>
+    </div>
+</div>
